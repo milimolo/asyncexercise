@@ -22,10 +22,9 @@ namespace AsyncExercise
 
                 Console.WriteLine("Here are the numbers from the server: ");
 
-                foreach (int x in numbers)
-                {
-                    Console.WriteLine(x);
-                }
+                foreach (var x in numbers)
+                    Console.Write(x.ToString() + ",");
+                
             }
         }
 
