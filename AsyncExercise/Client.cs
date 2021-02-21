@@ -1,4 +1,7 @@
 ﻿using System;
+using System.IO;
+using System.Text;
+
 namespace AsyncExercise
 {
     public class Client
@@ -20,10 +23,9 @@ namespace AsyncExercise
 
                 int[] numbers = mServer.GetNumbers(number, 1, 6);
 
-                Console.WriteLine("Here are the numbers from the server: ");
+                WriteToFile(numbers);
 
-                foreach (var x in numbers)
-                    Console.Write(x.ToString() + ",");
+                
                 
             }
         }
@@ -34,6 +36,23 @@ namespace AsyncExercise
             return int.Parse(Console.ReadLine());
         }
 
+        private void WriteToFile(int[] numbers)
+        {
+            string path = @"fromclient.txt";
+
+            StringBuilder sb = new StringBuilder();
+
+            foreach (var x in numbers)
+                sb.Append(x.ToString() + ", ");
+
+            sb.Remove(sb.Length - 2, 2);
+
+            StreamWriter sw = File.AppendText(path);
+
+            sw.WriteLine(sb.ToString());
+
+            sw.Flush();
+        }
 
     }
 }
