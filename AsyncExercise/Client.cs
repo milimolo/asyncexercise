@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace AsyncExercise
 {
@@ -23,10 +24,12 @@ namespace AsyncExercise
 
                 int[] numbers = mServer.GetNumbers(number, 1, 6);
 
-                WriteToFile(numbers);
+                //_ = Task.Factory.StartNew(() => {
+                //    int[] numbers = mServer.GetNumbers(number, 1, 6);
+                //    WriteToFile(numbers);
+                //});
 
-                
-                
+
             }
         }
 
